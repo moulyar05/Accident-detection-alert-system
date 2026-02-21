@@ -5,10 +5,14 @@ import datetime
 from email_alert import send_alert
 import threading
 from incident_log import log_incident
+import threading
+import dashboard
 
 model = YOLO("yolov8n.pt")
 cap = cv2.VideoCapture(0)
 print("Fall Detection starting... Press Q to quit")
+
+threading.Thread(target=dashboard.start, daemon= True).start()
 while True:
     ret, frame = cap.read()
 
