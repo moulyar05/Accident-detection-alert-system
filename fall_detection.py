@@ -4,6 +4,7 @@ import smtplib
 import datetime
 from email_alert import send_alert
 import threading
+from incident_log import log_incident
 
 model = YOLO("yolov8n.pt")
 cap = cv2.VideoCapture(0)
@@ -35,6 +36,7 @@ while True:
                     color = (0, 0, 255)  
                     timestamp = datetime.datetime.now()
                     threading.Thread(target=send_alert, args=(timestamp,)).start()
+                    log_incident(timestamp)
                        
                 else:
                     status = "Normal"
