@@ -1,3 +1,6 @@
+# Logs fall incidents to CSV file
+# Only logs once per session using incident_logged flag
+
 incident_logged=False
 
 def log_incident(timestamp):
@@ -6,6 +9,7 @@ def log_incident(timestamp):
         return
     incident_logged = True
     with open("incidents.csv", "a") as file:
-        row_message=f"Fall detcted at {timestamp}"
+        # Write fall details with timestamp
+        row_message=f"Fall detected at {timestamp}"
         file.write(row_message + "\n")
     print("Incident logged")
