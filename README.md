@@ -36,7 +36,7 @@ This width > height logic triggers the fall alert.
 - Multiple camera support
 
 ## Screenshots
-(Add screenshots of your dashboard and detection here)
+![Dashboard](screenshot.png)
 
 ## How to Run
 1. Clone the repository
