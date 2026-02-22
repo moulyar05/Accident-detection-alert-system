@@ -1,6 +1,8 @@
+# Test file - used to verify camera is working
+
 import cv2
 cap = cv2.VideoCapture(0)
-print("Camera starting... Press Q to quir")
+print("Camera starting... Press Q to quit")
 
 while True:
     ret, frame = cap.read()

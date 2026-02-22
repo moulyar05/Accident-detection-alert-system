@@ -1,13 +1,15 @@
+# AI Accident Detection System
+# Detects falls using YOLOv8, sends email alerts and logs incidents
+
 import cv2
 from ultralytics import YOLO
-import smtplib
 import datetime
 from email_alert import send_alert
 import threading
 from incident_log import log_incident
-import threading
 import dashboard
 
+# Load YOLOv8 model and start camera
 model = YOLO("yolov8n.pt")
 cap = cv2.VideoCapture(0)
 print("Fall Detection starting... Press Q to quit")
@@ -34,11 +36,12 @@ while True:
                 width = x2 - x1
                 height = y2 - y1
                 
-    
+                # Fall detected if bounding box is wider than tall
                 if width > height:
                     status = "FALL DETECTED!"
                     color = (0, 0, 255)  
                     timestamp = datetime.datetime.now()
+                    # Start dashboard in background thread
                     threading.Thread(target=send_alert, args=(timestamp,)).start()
                     log_incident(timestamp)
                        

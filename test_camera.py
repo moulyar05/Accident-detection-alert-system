@@ -1,3 +1,5 @@
+# Test file - used to verify camera and YOLOv8 are working
+
 import cv2
 from ultralytics import YOLO
 
